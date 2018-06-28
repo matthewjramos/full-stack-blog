@@ -1,4 +1,4 @@
-class PlaylistsController < ApplicationController
+class PlaylistsController < OpenReadController
   before_action :set_playlist, only: [:show, :update, :destroy]
 
   # GET /playlists
@@ -15,7 +15,7 @@ class PlaylistsController < ApplicationController
 
   # POST /playlists
   def create
-    @playlist = Playlist.new(playlist_params)
+    @playlist = current_user.playlists.build(playlist_params)
 
     if @playlist.save
       render json: @playlist, status: :created
@@ -41,7 +41,7 @@ class PlaylistsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_playlist
-      @playlist = Playlist.find(params[:id])
+      @playlist = current_user.playlists.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
