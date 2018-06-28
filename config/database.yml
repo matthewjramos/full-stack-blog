@@ -1,4 +1,4 @@
-<% project_name = 'full-stack-blog
+<% project_name = 'full-stack-blog' %>
 default: &default
   adapter: postgresql
   encoding: unicode
