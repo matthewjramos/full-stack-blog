@@ -3,7 +3,7 @@ class PlaylistsController < OpenReadController
 
   # GET /playlists
   def index
-    @playlists = Playlist.all
+    @playlists = current_user.playlists.all
 
     render json: @playlists
   end

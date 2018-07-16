@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :examples, except: %i[new edit]
   resources :users, only: %i[index show update]
   resources :playlists, except: %i[new edit]
+  resources :songs, except: %i[new edit update]
 
   # Custom routes
   post '/sign-up' => 'users#signup'
